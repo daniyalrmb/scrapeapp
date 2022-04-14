@@ -2,11 +2,8 @@
 # coding: utf-8
 
 # In[ ]:
-pip install selenium
-pip install bs4
 
 from selenium import webdriver
-from bs4 import BeautifulSoup
 import time
 import pandas as pd
 import requests
