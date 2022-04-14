@@ -2,16 +2,14 @@
 # coding: utf-8
 
 # In[ ]:
-
+pip install selenium
+pip install bs4
 
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
 import pandas as pd
-import re as re
 import requests
-from urllib import request
-from lxml import html
 import streamlit as st
 
 # accessing Chromedriver
