@@ -4,3 +4,4 @@ requests
 bs4
 requests
 urllib3==1.26.9
+fake-useragent
