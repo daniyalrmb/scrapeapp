@@ -8,6 +8,7 @@ import urllib3
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 # accessing Chromedriver
@@ -22,7 +23,7 @@ def getData(search):
   #chrome_options.add_argument("--no-sandbox") # linux only
   chrome_options.add_argument("--headless")
   # chrome_options.headless = True # also works
-  driver = webdriver.Chrome(options=chrome_options)
+  driver = webdriver.Chrome(ChromeDriverManager().install() ,options=chrome_options)
   start_url = 'https://www.daraz.pk/catalog/?q={}&_keyori=ss&from=input&spm=a2a0e.home.search.go.35e34937MnH6tM'.format(search)
   driver.get(start_url)
   source = driver.page_source
