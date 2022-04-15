@@ -21,13 +21,8 @@ def getData(search):
 st.title("Daraz Scraper")
 search = st.text_input('Enter search term')
 
-if search != '':
-    try:
-        time.sleep(5)
-        p = getData(search)
-        time.sleep(5)
-        st.subheader(p)
-        st.subheader(" Recent Repositories")
-    #st.table(repo_info)
-    except:
-        st.subheader("User doesn't exist")
+time.sleep(5)
+p = getData(search)
+time.sleep(5)
+st.subheader(p)
+st.subheader(" Recent Repositories")
