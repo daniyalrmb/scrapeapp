@@ -7,18 +7,19 @@ import bs4 as BeautifulSoup
 import re
 import json
 import urllib3
+from fake_useragent import UserAgent
 
 # accessing Chromedriver
 def getData(search):
 
-    headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
-    }
+  
+    ua = UserAgent()
+    headers = {'User-Agent':str(ua.chrome)}
     
     URL = 'https://www.daraz.pk/catalog/?q={}&_keyori=ss&from=input&spm=a2a0e.home.search.go.35e34937MnH6tM'.format(search)
 
     html_doc = requests.get(url = URL, headers = headers)
-    html_doc = html_doc.content
+    html_doc = html_doc.text
     return html_doc
     
 st.title("Daraz Scraper")
