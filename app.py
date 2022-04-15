@@ -11,8 +11,10 @@ import urllib3
 # accessing Chromedriver
 def getData(search):
     p=[]
+    
     URL = 'https://www.daraz.pk/catalog/?q={}&_keyori=ss&from=input&spm=a2a0e.home.search.go.35e34937MnH6tM'.format(search)
-    html_doc = requests.get(URL).text
+    session = requests.Session()
+    html_doc = session.get(URL).text
 
     return html_doc
     
@@ -23,4 +25,5 @@ time.sleep(5)
 p = getData(search)
 time.sleep(5)
 st.subheader(p)
+re.search(r'window\.pageData=({.*})', p)
 st.subheader(" Recent Repositories")
