@@ -32,9 +32,9 @@ def getData(search):
     
     #session = requests.Session()
     #html_doc = session.get(URL).text
-    data = json.loads(re.search(r'window\.pageData=({.*})', html_doc).group(1))
-    for item in data['mods']['listItems']:
-        p.append(item['name'])
+    #data = json.loads(re.search(r'window\.pageData=({.*})', html_doc).group(1))
+    #for item in data['mods']['listItems']:
+    #    p.append(item['name'])
     return html_doc
     
 st.title("Daraz Scraper")
