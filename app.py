@@ -27,7 +27,7 @@ def getData(search):
 
     URL = 'https://www.daraz.pk/catalog/?q={}&_keyori=ss&from=input&spm=a2a0e.home.search.go.35e34937MnH6tM'.format(search)
 
-    html_doc = requests.get(url=URL, headers=headers).text
+    html_doc = requests.get(url=URL, headers=headers).content
 
     
     #session = requests.Session()
