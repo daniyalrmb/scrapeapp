@@ -3,3 +3,4 @@ requests
 requests
 urllib3==1.26.9
 selenium
+webdriver-manager
