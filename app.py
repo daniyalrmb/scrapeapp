@@ -15,7 +15,9 @@ def getData(search):
     URL = 'https://www.daraz.pk/catalog/?q={}&_keyori=ss&from=input&spm=a2a0e.home.search.go.35e34937MnH6tM'.format(search)
     session = requests.Session()
     html_doc = session.get(URL).text
-
+    data = json.loads(re.search(r'window\.pageData=({.*})', html_doc).group(1))
+    for item in data['mods']['listItems']:
+        p.append(item['name'])
     return html_doc
     
 st.title("Daraz Scraper")
