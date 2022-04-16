@@ -43,7 +43,8 @@ def getData(search, pages):
     iddata = ['https://www.aliexpress.com/item/'+j+'.html' for j in iddata]
 
     df = pd.DataFrame(
-        {'Stores': data
+        {'Stores': data,
+        'Names': namedata
         })
     
     return df
