@@ -62,6 +62,11 @@ def convert_df(df):
 st.title("aliexpress scraper")
 search = st.text_input('Enter search term')
 pages = st.number_input('Enter number of pages here', min_value=1, max_value=10, value=5, step=1)
+
+fig = plt.figure(figsize=(10, 4))
+sns.lineplot(x = "Price", data = p)
+st.pyplot(fig)
+
 time.sleep(1)
 p = getData(search, pages)
 csv = convert_df(p)
@@ -73,10 +78,6 @@ st.download_button(
    key='download-csv'
 )
 time.sleep(1)
-
-fig = plt.figure(figsize=(10, 4))
-sns.lineplot(x = "Price", data = p)
-st.pyplot(fig)
 
 AgGrid(p, height=500, fit_columns_on_grid_load=True, enable_enterprise_modules=True)
 
