@@ -7,7 +7,7 @@ import re
 
 def getData(search):
 
-    start_url = 'https://www.olx.com.pk/items/q-{}'.format(text)
+    start_url = 'https://www.olx.com.pk/items/q-{}'.format(search)
     source = requests.get(start_url).text
     data = re.findall('" aria-label="Title">(.*)</div><div class="_52497c97"', source)
     
