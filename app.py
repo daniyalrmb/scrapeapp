@@ -22,7 +22,7 @@ def getData(search, pages):
     iddat = []
     
     for i in range(1,pages):
-        sec_url = 'https://www.aliexpress.com/wholesale?trafficChannel=main&d=y&CatId=0&SearchText=lamp&ltype=wholesale&SortType=default&page={}'.format(i)
+        sec_url = 'https://www.aliexpress.com/wholesale?trafficChannel=main&d=y&CatId=0&SearchText={}&ltype=wholesale&SortType=default&page={}'.format(search, i)
         source = requests.get(sec_url).content
         dat.append(re.findall('"storeName":"(.*?)","storeId":', str(source)))
         namedat.append(re.findall('":{"displayTitle":"(.*?)","shortTitle":', str(source)))
