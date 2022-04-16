@@ -75,9 +75,9 @@ st.download_button(
    key='download-csv'
 )
 time.sleep(1)
-hist_values = np.histogram(
-    p['Price'])[0]
-st.line_chart(p['Price'])
+st.subheader('Prices in USD')
+hist_values = np.histogram(p['Price'], bins=10, range=(0,1000))[0]
+st.bar_chart(hist_values)
 
 AgGrid(p, height=500, fit_columns_on_grid_load=True, enable_enterprise_modules=True)
 
