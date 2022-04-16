@@ -58,7 +58,7 @@ def convert_df(df):
    return df.to_csv().encode('utf-8')
 
 
-st.title("olx.pk Scraper")
+st.title("aliexpress scraper")
 search = st.text_input('Enter search term')
 pages = st.number_input('Enter number of pages here', min_value=1, max_value=10, value=5, step=1)
 time.sleep(1)
