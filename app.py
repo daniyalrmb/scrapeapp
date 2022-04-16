@@ -12,7 +12,7 @@ def getData(search):
     data = re.findall('" aria-label="Title">(.*)</div><div class="_52497c97"', source)
     return data
     
-st.title("Daraz Scraper")
+st.title("olx.pk Scraper")
 search = st.text_input('Enter search term')
 
 time.sleep(5)
