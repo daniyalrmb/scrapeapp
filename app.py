@@ -77,7 +77,7 @@ st.download_button(
 time.sleep(1)
 hist_values = np.histogram(
     p['Price'])[0]
-st.bar_chart(hist_values)
+st.line_chart(p)
 
 AgGrid(p, height=500, fit_columns_on_grid_load=True, enable_enterprise_modules=True)
 
