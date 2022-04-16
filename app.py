@@ -6,23 +6,48 @@ import requests
 import re
 
 def getData(search, pages):
-
-    #start_url = 'https://www.olx.com.pk/items/q-{}'.format(search)
+    
     start_url = 'https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20220416075355&SearchText={}&spm=a2g0o.home.1000002.0'.format(search)
     source = requests.get(start_url).content
     data = re.findall('"storeName":"(.*?)","storeId":', str(source))
-    #source = requests.get(start_url).text
-    #data = re.findall('" aria-label="Title">(.*)</div><div class="_52497c97"', source)
+    namedata = re.findall('":{"displayTitle":"(.*?)","shortTitle":', str(source))
+    pricedata = re.findall('formatted_price":"PKR (.*?)","csp"', str(source))
+    pricedata = [int(j.replace(',','')) for j in pricedata]
+    iddata = re.findall('"productId":(.*?),"store":{', str(source))
+
+
     dat = []
+    namedat = []
+    pricedat = []
+    iddat = []
     
-    for i in range(1, pages):
+    for i in range(1,pages):
         sec_url = 'https://www.aliexpress.com/wholesale?trafficChannel=main&d=y&CatId=0&SearchText=lamp&ltype=wholesale&SortType=default&page={}'.format(i)
         source = requests.get(sec_url).content
         dat.append(re.findall('"storeName":"(.*?)","storeId":', str(source)))
+        namedat.append(re.findall('":{"displayTitle":"(.*?)","shortTitle":', str(source)))
+        pricedat.append(re.findall('formatted_price":"PKR (.*?)","csp"', str(source)))
+        iddat.append(re.findall('"productId":(.*?),"store":{', str(source)))
+
 
     flat_list = [item for sublist in dat for item in sublist]
+    name_list = [item for sublist in namedat for item in sublist]
+    price_list = [item for sublist in pricedat for item in sublist]
+    price_list = [int(j.replace(',','')) for j in price_list]
+    id_list = [item for sublist in iddat for item in sublist]
+
     data = data + flat_list
-    df = pd.DataFrame(data, columns =['Stores'])
+    namedata = namedata + name_list
+    pricedata = pricedata + price_list
+    iddata = iddata + id_list
+    iddata = ['https://www.aliexpress.com/item/'+j+'.html' for j in iddata]
+
+    df = pd.DataFrame(
+        {'Stores': data,
+        'Names': namedata,
+        'Price': pricedata,
+        'ProductLink': iddata
+        })
     
     return df
     
