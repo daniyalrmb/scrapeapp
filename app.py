@@ -28,7 +28,7 @@ def getData(search, pages):
     
 st.title("olx.pk Scraper")
 search = st.text_input('Enter search term')
-pages = st.number_input(label = 'Enter number of pages here', min_value=0, format = %i)
+pages = st.number_input('Enter number of pages here', min_value=1, max_value=10, value=5, step=1)
 
 time.sleep(5)
 p = getData(search, pages)
