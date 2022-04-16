@@ -44,9 +44,10 @@ def getData(search, pages):
 
     df = pd.DataFrame(
         {'Stores': data,
-        'Names': namedata,
-        'Price': pricedata
+        'Names': namedata
         })
+    
+    df['Price'] = pricedata
     
     return df
     
