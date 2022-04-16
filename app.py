@@ -13,7 +13,7 @@ def getData(search, pages):
     data = re.findall('"storeName":"(.*?)","storeId":', str(source))
     namedata = re.findall('":{"displayTitle":"(.*?)","shortTitle":', str(source))
     pricedata = re.findall('formatted_price":"PKR (.*?)","csp"', str(source))
-    pricedata = [int(float(j).replace('PKR','') for j in pricedata]
+    pricedata = [int(float(j)) for j in pricedata]
     iddata = re.findall('"productId":(.*?),"store":{', str(source))
 
 
@@ -34,7 +34,7 @@ def getData(search, pages):
     flat_list = [item for sublist in dat for item in sublist]
     name_list = [item for sublist in namedat for item in sublist]
     price_list = [item for sublist in pricedat for item in sublist]
-    price_list = [int(float(j)).replace('PKR','') for j in price_list]
+    price_list = [int(float(j)) for j in price_list]
     id_list = [item for sublist in iddat for item in sublist]
 
     data = data + flat_list
