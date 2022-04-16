@@ -4,6 +4,7 @@ import time
 import urllib3
 import requests
 import re
+from st_aggrid import AgGrid
 
 def getData(search, pages):
     
@@ -55,9 +56,8 @@ def getData(search, pages):
 st.title("olx.pk Scraper")
 search = st.text_input('Enter search term')
 pages = st.number_input('Enter number of pages here', min_value=1, max_value=10, value=5, step=1)
-pd.set_option("display.max_colwidth", -1)
 time.sleep(5)
 p = getData(search, pages)
 time.sleep(5)
-st.dataframe(p)
-st.subheader(" Recent Repositories")
+
+AgGrid(p, height=500, fit_columns_on_grid_load=True)
