@@ -10,9 +10,7 @@ def getData(search):
     start_url = 'https://www.olx.com.pk/items/q-{}'.format(search)
     source = requests.get(start_url).text
     data = re.findall('" aria-label="Title">(.*)</div><div class="_52497c97"', source)
-    
-    df = pd.DataFrame(data)
-    return df
+    return data
     
 st.title("Daraz Scraper")
 search = st.text_input('Enter search term')
