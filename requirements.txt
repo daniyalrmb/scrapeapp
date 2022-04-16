@@ -4,3 +4,5 @@ requests
 urllib3==1.26.9
 selenium
 webdriver-manager
+selenium-stealth
+fake_useragent
