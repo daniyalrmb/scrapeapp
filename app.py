@@ -47,7 +47,8 @@ def getData(search, pages):
         'Names': namedata
         })
     
-    df['Price'] = pricedata
+    df['Price'] = pd.Series(pricedata)
+    df['ProductID'] = pd.Series(iddata)
     
     return df
     
