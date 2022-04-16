@@ -76,7 +76,7 @@ st.download_button(
 )
 time.sleep(1)
 st.subheader('Prices in USD')
-hist_values = np.histogram(p['Price'], bins=10, range=(0,1000))[0]
+hist_values = np.histogram(p['Price'], bins=50, range=(0,1000))[0]
 st.bar_chart(hist_values)
 
 AgGrid(p, height=500, fit_columns_on_grid_load=True, enable_enterprise_modules=True)
