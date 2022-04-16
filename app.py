@@ -76,7 +76,7 @@ st.download_button(
 )
 time.sleep(1)
 hist_values = np.histogram(
-    p['Price], bins=24, range=(0,24))[0]
+    p['Price'], bins=24, range=(0,24))[0]
 st.bar_chart(hist_values)
 
 AgGrid(p, height=500, fit_columns_on_grid_load=True, enable_enterprise_modules=True)
