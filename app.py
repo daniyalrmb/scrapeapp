@@ -52,13 +52,26 @@ def getData(search, pages):
     df['ProductID'] = pd.Series(iddata)
     
     return df
-    
+
+@st.cache
+def convert_df(df):
+   return df.to_csv().encode('utf-8')
+
+
 st.title("olx.pk Scraper")
 search = st.text_input('Enter search term')
 pages = st.number_input('Enter number of pages here', min_value=1, max_value=10, value=5, step=1)
-time.sleep(5)
+time.sleep(1)
 p = getData(search, pages)
-time.sleep(5)
+csv = convert_df(p)
+st.download_button(
+   "Press to Download",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)
+time.sleep(1)
 
 AgGrid(p, height=500, fit_columns_on_grid_load=True, enable_enterprise_modules=True)
 
