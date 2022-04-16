@@ -5,6 +5,7 @@ import urllib3
 import requests
 import re
 from st_aggrid import AgGrid
+import seaborn as sns
 
 def getData(search, pages):
     
@@ -72,6 +73,10 @@ st.download_button(
    key='download-csv'
 )
 time.sleep(1)
+
+fig = plt.figure(figsize=(10, 4))
+sns.lineplot(x = "Price", data = p)
+st.pyplot(fig)
 
 AgGrid(p, height=500, fit_columns_on_grid_load=True, enable_enterprise_modules=True)
 
