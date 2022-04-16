@@ -12,7 +12,7 @@ def getData(search, pages):
     source = requests.get(start_url).content
     data = re.findall('"storeName":"(.*?)","storeId":', str(source))
     namedata = re.findall('":{"displayTitle":"(.*?)","shortTitle":', str(source))
-    pricedata = re.findall('","csp":"(.*?),1","x_object_type"', str(source))
+    pricedata = re.findall(',"pdp_pi":"-1%3B(.*?)%3B-1%3B-1%', str(source))
     #pricedata = [int(float(j)) for j in pricedata]
     iddata = re.findall('"productId":(.*?),"store":{', str(source))
 
@@ -27,7 +27,7 @@ def getData(search, pages):
         source = requests.get(sec_url).content
         dat.append(re.findall('"storeName":"(.*?)","storeId":', str(source)))
         namedat.append(re.findall('":{"displayTitle":"(.*?)","shortTitle":', str(source)))
-        pricedat.append(re.findall('","csp":"(.*?),1","x_object_type"', str(source)))
+        pricedat.append(re.findall(',"pdp_pi":"-1%3B(.*?)%3B-1%3B-1%', str(source)))
         iddat.append(re.findall('"productId":(.*?),"store":{', str(source)))
 
 
