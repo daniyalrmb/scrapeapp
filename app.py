@@ -12,7 +12,7 @@ def getData(search, pages):
     source = requests.get(start_url).content
     data = re.findall('"storeName":"(.*?)","storeId":', str(source))
     namedata = re.findall('":{"displayTitle":"(.*?)","shortTitle":', str(source))
-    pricedata = re.findall('formatted_price":"PKR (.*?)","csp"', str(source))
+    pricedata = re.findall('"minPrice":(.*?),"priceType"', str(source))
     #pricedata = [int(j.replace(',','')) for j in pricedata]
     iddata = re.findall('"productId":(.*?),"store":{', str(source))
 
@@ -27,7 +27,7 @@ def getData(search, pages):
         source = requests.get(sec_url).content
         dat.append(re.findall('"storeName":"(.*?)","storeId":', str(source)))
         namedat.append(re.findall('":{"displayTitle":"(.*?)","shortTitle":', str(source)))
-        pricedat.append(re.findall('formatted_price":"PKR (.*?)","csp"', str(source)))
+        pricedat.append(re.findall('"minPrice":(.*?),"priceType"', str(source)))
         iddat.append(re.findall('"productId":(.*?),"store":{', str(source)))
 
 
